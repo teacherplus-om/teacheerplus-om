@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>معلّم بلس | منصة المعلم المتكاملة</title>
+  <meta name="description" content="معلّم بلس — منصة تعليمية متكاملة للمعلمين في سلطنة عُمان: تحضير، بنك أسئلة، ألعاب، إدارة صف، تقارير وتصدير لمنصة نور." />
+  <meta name="theme-color" content="#14213D" />
+  <meta property="og:title" content="معلّم بلس | منصة المعلم المتكاملة" />
+  <meta property="og:description" content="كل ما يحتاجه المعلم... في مكان واحد. جرّب النماذج واطلب منصتك باسمك." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_OM" />
+  <meta property="og:image" content="./thumb-math.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect x='8' y='8' width='184' height='184' rx='48' fill='%2314213D'/%3E%3Cpath d='M100 78 C82 66 60 64 42 68 V148 C60 144 82 146 100 158 C118 146 140 144 158 148 V68 C140 64 118 66 100 78 Z' fill='none' stroke='%23FFF9EF' stroke-width='11' stroke-linejoin='round'/%3E%3Cpath d='M100 78 V158' stroke='%23FFF9EF' stroke-width='11'/%3E%3Ccircle cx='150' cy='56' r='32' fill='%23F4A623' stroke='%2314213D' stroke-width='8'/%3E%3Cpath d='M150 40 V72 M134 56 H166' stroke='%2314213D' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F2F5FB', 100: '#E3E9F5', 200: '#C7D2EA',
+              500: '#2F4A85', 600: '#22396C', 700: '#14213D',
+              gold: '#F4A623', accent: '#0F8B8D'
+            }
+          },
+          fontFamily: {
+            sans: ['Tajawal', 'Cairo', 'sans-serif'],
+            heading: ['Cairo', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 4px 24px rgba(20,33,61,.08)',
+            card: '0 8px 30px rgba(20,33,61,.12)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    body { font-family: 'Tajawal', 'Cairo', sans-serif; }
+    .font-heading { font-family: 'Cairo', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0f1a30 0%, #14213D 40%, #1a3358 70%, #0F8B8D 140%); }
+    .section { padding: 4rem 0; }
+    @media (min-width: 640px) { .section { padding: 5rem 0; } }
+    .card-hover { transition: transform .2s ease, box-shadow .2s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(20,33,61,.14); }
+    .btn-gold {
+      background: linear-gradient(135deg, #F4A623, #e09410);
+      color: #14213D; font-weight: 800;
+      transition: filter .15s, transform .15s, box-shadow .15s;
+    }
+    .btn-gold:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: 0 10px 28px -6px rgba(244,166,35,.5); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.35); color: #fff; font-weight: 700;
+      transition: background .15s, border-color .15s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.55); }
+    .btn-outline-dark {
+      border: 2px solid #14213D; color: #14213D; font-weight: 700;
+      transition: background .15s, color .15s;
+    }
+    .btn-outline-dark:hover { background: #14213D; color: #fff; }
+    .step-ring {
+      width: 2.5rem; height: 2.5rem; border-radius: 9999px;
+      background: linear-gradient(135deg, #F4A623, #e09410);
+      color: #14213D; font-weight: 900; font-family: Cairo, sans-serif;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-link.active { color: #F4A623; }
+    .float-slow { animation: floatY 6s ease-in-out infinite; }
+    @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .device-frame {
+      background: #0f172a; border-radius: 1rem; overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,.5);
+      border: 2px solid rgba(255,255,255,.08);
+    }
+    .mock-screen { background: linear-gradient(160deg, #1e3a5f, #0F8B8D); min-height: 160px; }
+    .wa-float {
+      position: fixed; bottom: 1.25rem; left: 1.25rem; z-index: 50;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      background: #25D366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(37,211,102,.4);
+      transition: transform .15s;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+  </style>
+</head>
+<body class="bg-[#F7F8FC] text-slate-800 antialiased">
+
+  <script>
+    const TEACHER_PLUS_STORE_CONFIG = {
+      platformName: "معلّم بلس",
+      tagline: "كل ما يحتاجه المعلم... في مكان واحد",
+      whatsappNumber: "96897752737",
+      instagramUrl: "https://www.instagram.com/teacherplus.om",
+      currency: "ر.ع",
+      packages: {
+        basic: { id: "basic", name: "باقة معلّم بلس الأساسية", price: 7 },
+        board: { id: "board", name: "الأساسية + السبورة الذكية", price: 11 },
+        games3d: { id: "games3d", name: "الأساسية + ألعاب 3D", price: 11 },
+        full: { id: "full", name: "معلّم بلس الكامل (الأساسية + السبورة + ألعاب 3D)", price: 15 }
+      },
+      // available: true = نموذج جاهز يفتح مباشرة | false = يظهر "قريبًا" مع زر طلب عبر واتساب
+      gallery: [
+        { subject: "اللغة العربية (لغتي الجميلة)", grade: "الصف التاسع", pkg: "الباقة الكاملة", icon: "📖", thumb: "./thumb-arabic9.jpg", previewUrl: "./demo-arabic9.html", available: true },
+        { subject: "اللغة العربية (أحب لغتي)", grade: "الصف الرابع", pkg: "الباقة الأساسية", icon: "📖", thumb: "./thumb-arabic.jpg", previewUrl: "./demo-arabic.html", available: true },
+        { subject: "الرياضيات", grade: "الصف الثاني", pkg: "الباقة الكاملة", icon: "🔢", thumb: "./thumb-math.jpg", previewUrl: "./demo-math.html", available: true },
+        { subject: "الرياضيات", grade: "الصف الثالث", pkg: "الباقة الكاملة", icon: "🔢", thumb: "./thumb-math3.jpg", previewUrl: "./demo-math3.html", available: true },
+        { subject: "العلوم", grade: "الصف الثاني", pkg: "الباقة الكاملة", icon: "🔬", thumb: "./thumb-science.jpg", previewUrl: "./demo-science.html", available: true },
+        { subject: "اللغة الإنجليزية", grade: "الصف الثالث", pkg: "الباقة الأساسية", icon: "🔤", thumb: "./thumb-english.jpg", previewUrl: "./demo-english.html", available: true },
+        { subject: "الدراسات الاجتماعية", grade: "الصف التاسع", pkg: "الباقة الكاملة", icon: "🌍", thumb: "./thumb-social.jpg", previewUrl: "./demo-social.html", available: true },
+        { subject: "تقنية المعلومات", grade: "الصف التاسع", pkg: "الباقة الأساسية", icon: "💻", thumb: "./thumb-it.jpg", previewUrl: "./demo-it.html", available: true }
+      ],
+      faq: [
+        { q: "ما هي منصة معلّم بلس؟", a: "منصة تعليمية متكاملة تجمع أدوات المعلم اليومية في مكان واحد: التحضير التفاعلي، إدارة الصف، الأنشطة، بنك الأسئلة، التقارير، تصدير SCORM والمزيد." },
+        { q: "هل المنصة تعمل على الهاتف؟", a: "نعم. المنصة مصممة لتكون متجاوبة بالكامل وتعمل على الهاتف والتابلت والكمبيوتر." },
+        { q: "كيف أطلب منصتي؟", a: "اختر الباقة واملأ نموذج الطلب، ثم أرسل الطلب عبر واتساب. سنتواصل معك لإتمام التخصيص والتسليم." },
+        { q: "هل يمكن تخصيص المادة والصف؟", a: "نعم. كل منصة تُجهَّز حسب المادة والصف والفصل واسم المعلم والمدرسة." },
+        { q: "ما الفرق بين الباقة الأساسية والكاملة؟", a: "الأساسية (7 ر.ع) تشمل أدوات المعلم اليومية. يمكنك إضافة السبورة الذكية أو ألعاب 3D بـ 11 ر.ع، أو الكاملة بالإضافتين بـ 15 ر.ع." },
+        { q: "هل أستطيع تجربة المنصة قبل الطلب؟", a: "نعم. افتح أي نموذج من قسم النماذج وجرّبه كاملًا. النماذج بأسماء افتراضية، وأي تجربة فيها تُحفظ على جهازك فقط." },
+        { q: "هل تصدّر المنصة الأنشطة لمنصة نور؟", a: "نعم. يمكنك تصدير الأنشطة والألعاب بصيغة SCORM ورفعها في منصة نور، وتُسجَّل درجات الطلاب تلقائيًا." }
+      ]
+    };
+  </script>
+
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <a href="#home" class="flex items-center gap-2.5 shrink-0">
+        <div class="w-9 h-9 rounded-xl bg-brand-700 flex items-center justify-center shadow-md">
+          <svg viewBox="0 0 40 40" class="w-6 h-6" fill="none" aria-hidden="true">
+            <path d="M20 14 C15.5 11.5 11 11 7 12 V30 C11 29 15.5 29.5 20 32.5 C24.5 29.5 29 29 33 30 V12 C29 11 24.5 11.5 20 14 Z" stroke="#FFF9EF" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M20 14 V32.5" stroke="#FFF9EF" stroke-width="2.2"/>
+            <circle cx="30" cy="10" r="5.5" fill="#F4A623" stroke="#14213D" stroke-width="1.5"/>
+            <path d="M30 7.2 V12.8 M27.2 10 H32.8" stroke="#14213D" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="font-heading font-extrabold text-brand-700 text-lg">معلّم بلس</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-1 text-sm font-bold text-slate-600">
+        <a href="#features" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-brand-700">المميزات</a>
+        <a href="#packages" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-brand-700">الباقات</a>
+        <a href="#gallery" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-brand-700">النماذج</a>
+        <a href="#how" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-brand-700">كيف تطلب</a>
+        <a href="#faq" class="nav-link px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-brand-700">أسئلة</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="#order" class="btn-gold px-4 py-2 rounded-xl text-sm hidden sm:inline-flex items-center gap-1.5 shadow-sm">اطلب منصتك</a>
+        <button type="button" id="menuBtn" class="md:hidden w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-brand-700" aria-label="القائمة">☰</button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 py-3 space-y-1">
+      <a href="#features" class="block px-3 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-slate-50">المميزات</a>
+      <a href="#packages" class="block px-3 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-slate-50">الباقات</a>
+      <a href="#gallery" class="block px-3 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-slate-50">النماذج</a>
+      <a href="#how" class="block px-3 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-slate-50">كيف تطلب</a>
+      <a href="#faq" class="block px-3 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-slate-50">أسئلة</a>
+      <a href="#order" class="mt-2 btn-gold text-center py-2.5 rounded-xl block">اطلب منصتك</a>
+    </div>
+  </header>
+
+  <section id="home" class="hero-bg text-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 grid lg:grid-cols-2 gap-10 items-center">
+      <div class="text-center lg:text-right">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 px-3.5 py-1.5 rounded-full text-xs font-bold text-amber-200 mb-5">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span>
+          معلّم بلس · سلطنة عُمان
+        </div>
+        <h1 class="font-heading font-black text-4xl sm:text-5xl md:text-[3.25rem] leading-[1.15] mb-4 tracking-tight">
+          معلّم <span class="text-transparent bg-clip-text bg-gradient-to-l from-amber-300 to-amber-400">بلس</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-200 font-semibold mb-3 max-w-md mx-auto lg:mx-0 leading-snug">كل ما يحتاجه المعلم... في مكان واحد</p>
+        <p class="text-slate-300/90 text-[15px] leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">منصة تعليمية متكاملة تجمع أدوات المعلم اليومية — من التحضير وإدارة الصف إلى الألعاب والأنشطة والتقارير.</p>
+        <div class="flex flex-col sm:flex-row flex-wrap gap-3 justify-center lg:justify-start">
+          <a href="#gallery" class="btn-gold px-6 py-3.5 rounded-xl text-center inline-flex items-center justify-center gap-2 text-[15px]">استعرض النماذج</a>
+          <a href="#packages" class="btn-outline px-6 py-3.5 rounded-xl text-center text-[15px]">استكشف الباقات</a>
+          <a href="#order" class="btn-outline px-6 py-3.5 rounded-xl text-center text-[15px]">اطلب منصتك</a>
+        </div>
+      </div>
+      <div class="relative flex justify-center items-end gap-3 sm:gap-4 pt-2 float-slow">
+        <div class="device-frame w-[56%] max-w-[270px] z-10">
+          <div class="h-5 bg-slate-800 flex items-center justify-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-red-400/70"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400/70"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400/70"></span>
+          </div>
+          <div class="mock-screen p-3 flex flex-col gap-2">
+            <div class="h-2.5 w-2/3 bg-white/25 rounded-full"></div>
+            <div class="grid grid-cols-3 gap-1.5 mt-1">
+              <div class="h-11 bg-white/[0.12] rounded-lg"></div>
+              <div class="h-11 bg-brand-gold/35 rounded-lg"></div>
+              <div class="h-11 bg-white/[0.12] rounded-lg"></div>
+            </div>
+            <div class="h-16 bg-white/10 rounded-lg mt-1"></div>
+            <div class="flex gap-1.5 mt-auto">
+              <div class="h-8 flex-1 bg-brand-gold/40 rounded-lg"></div>
+              <div class="h-8 flex-1 bg-white/15 rounded-lg"></div>
+            </div>
+          </div>
+        </div>
+        <div class="device-frame w-[28%] max-w-[120px] mb-4 opacity-90">
+          <div class="h-3 bg-slate-800"></div>
+          <div class="mock-screen p-2 min-h-[140px]">
+            <div class="h-2 w-3/4 bg-white/25 rounded-full mb-2"></div>
+            <div class="space-y-1.5">
+              <div class="h-6 bg-white/[0.12] rounded"></div>
+              <div class="h-6 bg-white/[0.12] rounded"></div>
+              <div class="h-6 bg-brand-gold/30 rounded"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-brand-700 mb-3">لماذا معلّم بلس؟</h2>
+        <p class="text-slate-500 text-[15px] max-w-lg mx-auto">أدوات عملية تسهّل يومك الدراسي وتثري حصتك.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="bg-[#F7F8FC] border border-slate-100 rounded-2xl p-6 card-hover"><div class="text-3xl mb-3">📝</div><h3 class="font-bold text-brand-700 mb-1.5">تحضير تفاعلي</h3><p class="text-sm text-slate-500 leading-relaxed">خطط دروس جاهزة وقابلة للتعديل حسب دروس المنهج.</p></div>
+        <div class="bg-[#F7F8FC] border border-slate-100 rounded-2xl p-6 card-hover"><div class="text-3xl mb-3">🎯</div><h3 class="font-bold text-brand-700 mb-1.5">بنك أسئلة وأنشطة</h3><p class="text-sm text-slate-500 leading-relaxed">أسئلة وأنشطة صفية مرتبطة بكل درس مع تقويم سريع.</p></div>
+        <div class="bg-[#F7F8FC] border border-slate-100 rounded-2xl p-6 card-hover"><div class="text-3xl mb-3">🧑‍🏫</div><h3 class="font-bold text-brand-700 mb-1.5">إدارة الصف والنقاط</h3><p class="text-sm text-slate-500 leading-relaxed">شعب وطلاب ولوحة نقاط ومجموعات بضغطة واحدة.</p></div>
+        <div class="bg-[#F7F8FC] border border-slate-100 rounded-2xl p-6 card-hover"><div class="text-3xl mb-3">🖍️</div><h3 class="font-bold text-brand-700 mb-1.5">سبورة ذكية</h3><p class="text-sm text-slate-500 leading-relaxed">أدوات رسم وكتابة وعناصر تفاعلية للشرح الحي.</p></div>
+        <div class="bg-[#F7F8FC] border border-slate-100 rounded-2xl p-6 card-hover"><div class="text-3xl mb-3">🎮</div><h3 class="font-bold text-brand-700 mb-1.5">ألعاب تفاعلية</h3><p class="text-sm text-slate-500 leading-relaxed">مكتبة ألعاب مرتبطة بأسئلة الدرس لتحفيز الطلاب.</p></div>
+        <div class="bg-[#F7F8FC] border border-slate-100 rounded-2xl p-6 card-hover"><div class="text-3xl mb-3">📦</div><h3 class="font-bold text-brand-700 mb-1.5">تصدير SCORM</h3><p class="text-sm text-slate-500 leading-relaxed">صدّر أنشطة جاهزة لأنظمة إدارة التعلّم بسهولة.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages" class="section bg-[#F7F8FC]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-brand-700 mb-3">الباقات</h2>
+        <p class="text-slate-500 text-[15px]">اختر ما يناسب احتياجك</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-soft flex flex-col">
+          <h3 class="font-heading font-extrabold text-xl text-brand-700 mb-1">الباقة الأساسية</h3>
+          <p class="text-sm text-slate-500 mb-4">أدوات المعلم اليومية</p>
+          <div class="flex items-baseline gap-1 mb-6"><span class="text-4xl font-black text-brand-700">7</span><span class="text-slate-500 font-bold">ر.ع</span></div>
+          <ul class="space-y-2.5 text-sm text-slate-600 mb-8 flex-1">
+            <li class="flex gap-2"><span class="text-brand-accent font-bold">✓</span> التحضير التفاعلي وبنك الأسئلة</li>
+            <li class="flex gap-2"><span class="text-brand-accent font-bold">✓</span> الأنشطة والحصة السريعة والعجلة</li>
+            <li class="flex gap-2"><span class="text-brand-accent font-bold">✓</span> إدارة الصف ولوحة النقاط</li>
+            <li class="flex gap-2"><span class="text-brand-accent font-bold">✓</span> التقارير والمساعد الذكي</li>
+            <li class="flex gap-2"><span class="text-brand-accent font-bold">✓</span> النسخ الاحتياطي وتصدير SCORM</li>
+          </ul>
+          <a href="#order" data-package="basic" class="order-pkg-btn btn-outline-dark w-full py-3.5 rounded-xl text-center block text-[15px]">اختر الأساسية</a>
+        </div>
+        <div class="bg-white border-2 border-brand-gold rounded-2xl p-6 sm:p-8 shadow-card flex flex-col relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-gold text-brand-700 text-xs font-black px-3 py-1 rounded-full">الأكثر تكاملًا</span>
+          <h3 class="font-heading font-extrabold text-xl text-brand-700 mb-1">الباقة الكاملة</h3>
+          <p class="text-sm text-slate-500 mb-4">الأساسية + السبورة الذكية + ألعاب 3D</p>
+          <div class="flex items-baseline gap-1 mb-6"><span class="text-4xl font-black text-brand-700">15</span><span class="text-slate-500 font-bold">ر.ع</span></div>
+          <ul class="space-y-2.5 text-sm text-slate-600 mb-8 flex-1">
+            <li class="flex gap-2"><span class="text-brand-accent font-bold">✓</span> جميع مميزات الباقة الأساسية</li>
+            <li class="flex gap-2"><span class="text-brand-gold font-bold">★</span> السبورة الذكية</li>
+            <li class="flex gap-2"><span class="text-brand-gold font-bold">★</span> مكتبة ألعاب 3D</li>
+            <li class="flex gap-2"><span class="text-brand-accent font-bold">✓</span> أو اختر إضافة واحدة بـ 11 ر.ع</li>
+          </ul>
+          <a href="#order" data-package="full" class="order-pkg-btn btn-gold w-full py-3.5 rounded-xl text-center block text-[15px]">اختر الكاملة</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="section bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-brand-700 mb-3">نماذج من معلّم بلس</h2>
+        <p class="text-slate-500 text-[15px]">نماذج تجريبية كاملة بأسماء افتراضية — اضغط وجرّب المنصة بنفسك.</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" id="galleryGrid"></div>
+      <div class="text-center mt-8">
+        <a href="#order" class="inline-flex items-center gap-2 text-sm font-bold text-brand-accent hover:underline">مادتك غير موجودة؟ نجهّز منصتك لأي مادة وصف ←</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="section bg-[#F7F8FC]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-14">
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-brand-700 mb-3">كيف تحصل على منصتك؟</h2>
+        <p class="text-slate-500 text-[15px]">أربع خطوات بسيطة</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow-soft text-center border border-slate-100/80"><div class="step-ring mx-auto mb-4">١</div><h3 class="font-bold text-brand-700 mb-1.5">اختر الباقة</h3><p class="text-sm text-slate-500 leading-relaxed">الأساسية أو الكاملة حسب احتياجك.</p></div>
+        <div class="bg-white rounded-2xl p-6 shadow-soft text-center border border-slate-100/80"><div class="step-ring mx-auto mb-4">٢</div><h3 class="font-bold text-brand-700 mb-1.5">عبّئ البيانات</h3><p class="text-sm text-slate-500 leading-relaxed">المادة والصف واسمك والمدرسة.</p></div>
+        <div class="bg-white rounded-2xl p-6 shadow-soft text-center border border-slate-100/80"><div class="step-ring mx-auto mb-4">٣</div><h3 class="font-bold text-brand-700 mb-1.5">أرسل عبر واتساب</h3><p class="text-sm text-slate-500 leading-relaxed">رسالة طلب جاهزة تُرسل مباشرة.</p></div>
+        <div class="bg-white rounded-2xl p-6 shadow-soft text-center border border-slate-100/80"><div class="step-ring mx-auto mb-4">٤</div><h3 class="font-bold text-brand-700 mb-1.5">استلم منصتك</h3><p class="text-sm text-slate-500 leading-relaxed">نجهّزها ونسلّمها جاهزة للاستخدام.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order" class="section bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-brand-700 mb-3">اطلب منصتك الآن</h2>
+        <p class="text-slate-500 text-[15px]">املأ النموذج وسيُجهَّز طلب واتساب تلقائيًا</p>
+      </div>
+      <form id="orderForm" class="bg-[#F7F8FC] border border-slate-100 rounded-2xl p-6 sm:p-8 space-y-4 shadow-soft">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block"><span class="text-xs font-bold text-slate-600 mb-1 block">الاسم</span><input id="fName" type="text" required class="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/40" placeholder="اسمك الكريم" /></label>
+          <label class="block"><span class="text-xs font-bold text-slate-600 mb-1 block">المادة</span><input id="fSubject" type="text" required class="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/40" placeholder="مثال: الرياضيات" /></label>
+          <label class="block"><span class="text-xs font-bold text-slate-600 mb-1 block">الصف</span><input id="fGrade" type="text" required class="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/40" placeholder="مثال: الصف الخامس" /></label>
+          <label class="block"><span class="text-xs font-bold text-slate-600 mb-1 block">الفصل الدراسي</span>
+            <select id="fSem" class="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/40">
+              <option value="الفصل الأول">الفصل الأول</option>
+              <option value="الفصل الثاني">الفصل الثاني</option>
+            </select>
+          </label>
+          <label class="block sm:col-span-2"><span class="text-xs font-bold text-slate-600 mb-1 block">المدرسة (اختياري)</span><input id="fSchool" type="text" class="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/40" placeholder="اسم المدرسة" /></label>
+          <label class="block sm:col-span-2"><span class="text-xs font-bold text-slate-600 mb-1 block">الباقة</span>
+            <select id="fPkg" class="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/40">
+              <option value="basic">الأساسية — 7 ر.ع</option>
+              <option value="board">الأساسية + السبورة الذكية — 11 ر.ع</option>
+              <option value="games3d">الأساسية + ألعاب 3D — 11 ر.ع</option>
+              <option value="full" selected>الكاملة (السبورة + ألعاب 3D) — 15 ر.ع</option>
+            </select>
+          </label>
+        </div>
+        <div class="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-4 py-3">
+          <span class="text-sm font-bold text-slate-600">السعر</span>
+          <span class="text-xl font-black text-brand-700"><span id="finalPrice">15</span> ر.ع</span>
+        </div>
+        <button type="submit" class="btn-gold w-full py-3.5 rounded-xl text-[15px] inline-flex items-center justify-center gap-2">إرسال الطلب عبر واتساب</button>
+        <p class="text-[11px] text-slate-400 text-center">سيُفتح واتساب برسالة تحتوي اسمك والمادة والصف والباقة.</p>
+      </form>
+    </div>
+  </section>
+
+  <section id="faq" class="section bg-[#F7F8FC]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10"><h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-brand-700 mb-3">أسئلة شائعة</h2></div>
+      <div id="faqList" class="space-y-3"></div>
+    </div>
+  </section>
+
+  <footer class="bg-brand-700 text-white py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right">
+      <div>
+        <div class="font-heading font-extrabold text-lg mb-1">معلّم بلس</div>
+        <p class="text-sm text-white/70">منصة المعلم المتكاملة · سلطنة عُمان</p>
+      </div>
+      <div class="flex items-center gap-4 text-sm">
+        <a id="footerWa" href="#" target="_blank" rel="noopener" class="hover:text-brand-gold transition">واتساب</a>
+        <a href="https://www.instagram.com/teacherplus.om" target="_blank" rel="noopener" class="hover:text-brand-gold transition">إنستغرام</a>
+        <a href="#gallery" class="hover:text-brand-gold transition">النماذج</a>
+      </div>
+    </div>
+    <div class="text-center text-xs text-white/40 mt-6">© معلّم بلس</div>
+  </footer>
+
+  <a id="waFloat" href="#" target="_blank" rel="noopener" class="wa-float" aria-label="واتساب" title="تواصل عبر واتساب">
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    (function () {
+      const cfg = TEACHER_PLUS_STORE_CONFIG;
+      const waNum = String(cfg.whatsappNumber || '').replace(/\D/g, '');
+      function waLink(text) {
+        return 'https://wa.me/' + waNum + (text ? '?text=' + encodeURIComponent(text) : '');
+      }
+
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+      }
+
+      const sections = ['home', 'features', 'packages', 'gallery', 'how', 'order', 'faq'];
+      const navLinks = document.querySelectorAll('.nav-link');
+      function updateActive() {
+        let cur = 'home';
+        sections.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= 120) cur = id;
+        });
+        navLinks.forEach(a => {
+          const href = a.getAttribute('href') || '';
+          a.classList.toggle('active', href === '#' + cur);
+        });
+      }
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
+
+      const galleryGrid = document.getElementById('galleryGrid');
+      if (galleryGrid) {
+        galleryGrid.innerHTML = '';
+        (cfg.gallery || []).forEach(g => {
+          const icon = g.icon || '📘';
+          const card = document.createElement('div');
+          card.className = 'bg-[#F7F8FC] border border-slate-100 rounded-2xl overflow-hidden card-hover group flex flex-col';
+          if (g.available) {
+            const media = g.thumb
+              ? `<img src="${g.thumb}" alt="نموذج منصة ${g.subject}" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">`
+              : `<div class="w-full h-full bg-gradient-to-br from-brand-700 to-brand-accent flex items-center justify-center text-white text-3xl">${icon}</div>`;
+            card.innerHTML = `
+              <a href="${g.previewUrl}" target="_blank" rel="noopener" class="block relative aspect-[16/10] overflow-hidden bg-brand-700">${media}
+                <span class="absolute top-2 right-2 bg-white/90 text-brand-700 text-[11px] font-black px-2 py-0.5 rounded-full">${icon} ${g.pkg || ''}</span></a>
+              <div class="p-3.5 flex flex-col flex-1">
+                <h3 class="font-bold text-sm text-brand-700">${g.subject}</h3>
+                <p class="text-xs text-slate-400 mb-3">${g.grade}</p>
+                <a href="${g.previewUrl}" target="_blank" rel="noopener" class="mt-auto inline-flex items-center justify-center gap-1 text-xs font-black text-brand-700 bg-brand-gold/90 hover:bg-brand-gold rounded-lg py-2">جرّب النموذج ←</a>
+              </div>`;
+          } else {
+            const req = waLink('السلام عليكم، أرغب بمنصة معلّم بلس لمادة ' + g.subject);
+            card.innerHTML = `
+              <div class="relative aspect-[16/10] bg-gradient-to-br from-slate-200 to-slate-100 flex items-center justify-center text-4xl text-slate-500">${icon}
+                <span class="absolute top-2 right-2 bg-brand-700 text-white text-[11px] font-black px-2 py-0.5 rounded-full">قريبًا</span></div>
+              <div class="p-3.5 flex flex-col flex-1">
+                <h3 class="font-bold text-sm text-brand-700">${g.subject}</h3>
+                <p class="text-xs text-slate-400 mb-3">نموذج قيد التجهيز</p>
+                <a href="${req}" target="_blank" rel="noopener" class="mt-auto inline-flex items-center justify-center gap-1 text-xs font-bold text-brand-accent border border-brand-accent/40 hover:bg-brand-accent/10 rounded-lg py-2">اطلب منصة لمادتك</a>
+              </div>`;
+          }
+          galleryGrid.appendChild(card);
+        });
+      }
+
+      const faqList = document.getElementById('faqList');
+      if (faqList) {
+        (cfg.faq || []).forEach((item, i) => {
+          const el = document.createElement('details');
+          el.className = 'bg-white border border-slate-100 rounded-xl px-4 py-3 group';
+          if (i === 0) el.open = true;
+          el.innerHTML = `
+            <summary class="font-bold text-brand-700 cursor-pointer list-none flex items-center justify-between gap-2">
+              <span>${item.q}</span>
+              <span class="text-slate-400 group-open:rotate-180 transition">▾</span>
+            </summary>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed">${item.a}</p>`;
+          faqList.appendChild(el);
+        });
+      }
+
+      document.querySelectorAll('.order-pkg-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const pkg = btn.getAttribute('data-package');
+          const sel = document.getElementById('fPkg');
+          if (sel && pkg) { sel.value = pkg; calcPrice(); }
+        });
+      });
+
+      const pkgSelect = document.getElementById('fPkg');
+      function calcPrice() {
+        const pkg = pkgSelect ? pkgSelect.value : 'full';
+        const price = (cfg.packages[pkg] || cfg.packages.full).price;
+        const el = document.getElementById('finalPrice');
+        if (el) el.textContent = price;
+        return price;
+      }
+      if (pkgSelect) pkgSelect.addEventListener('change', calcPrice);
+      calcPrice();
+
+      function buildWaMessage() {
+        const name = (document.getElementById('fName') || {}).value || '';
+        const subject = (document.getElementById('fSubject') || {}).value || '';
+        const grade = (document.getElementById('fGrade') || {}).value || '';
+        const sem = (document.getElementById('fSem') || {}).value || '';
+        const school = (document.getElementById('fSchool') || {}).value || '';
+        const pkg = (document.getElementById('fPkg') || {}).value || 'full';
+        const pkgName = (cfg.packages[pkg] || cfg.packages.full).name;
+        const price = calcPrice();
+        let msg = 'طلب منصة معلّم بلس 📚\n\n';
+        msg += '👤 الاسم: ' + name + '\n';
+        msg += '📖 المادة: ' + subject + '\n';
+        msg += '🎓 الصف: ' + grade + '\n';
+        msg += '📅 الفصل: ' + sem + '\n';
+        if (school.trim()) msg += '🏫 المدرسة: ' + school + '\n';
+        msg += '📦 الباقة: ' + pkgName + '\n';
+        msg += '💰 السعر: ' + price + ' ' + cfg.currency + '\n';
+        return msg;
+      }
+
+
+      const form = document.getElementById('orderForm');
+      if (form) {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          window.open(waLink(buildWaMessage()), '_blank', 'noopener');
+        });
+      }
+
+      const waFloat = document.getElementById('waFloat');
+      if (waFloat) waFloat.href = waLink('السلام عليكم، أرغب بالاستفسار عن منصة معلّم بلس');
+      const footerWa = document.getElementById('footerWa');
+      if (footerWa) footerWa.href = waLink('السلام عليكم، أرغب بالاستفسار عن منصة معلّم بلس');
+    })();
+  </script>
+</body>
+</html>
